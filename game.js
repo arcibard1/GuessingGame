@@ -3,11 +3,23 @@ const button = document.querySelector("#guessButton");
 const tracker = document.querySelector("#guessTracker");
 const message = document.querySelector("#message");
 const reset = document.querySelector("#reset");
-const body = document.body
+const body = document.body;
+const hint = document.querySelector("#hint");
 
 let answer = Math.floor(Math.random() * 101);
+let hintArr = [];
 let attempts = 5;
 let pastGuesses = [];
+
+// create three random numbers.
+while (4 > hintArr.length) {
+    let randomNum = Math.floor(Math.random() * 101);
+    let checkArr = [...pastGuesses,...hintArr, answer];
+    if (checkArr.includes(randomNum)) {
+        return;
+    } else hintArr.push(randomNum);
+}
+
 /*
 1. intialize a variable to keep track of the number of attempts
 and an array to store the previous guesses
@@ -70,4 +82,9 @@ reset.addEventListener("click", function () {
     input.value = "";
 });
 
+hint.addEventListener("click", function () {
+    answerPosition = Math.floor(Math.random() * 3);
+    hintArr[answerPosition] = answer;
+    message.textContent = `The answer is either ${hintArr}.`
+});
 

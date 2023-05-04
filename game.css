@@ -30,6 +30,10 @@ input, button {
     border-radius: 5px;
 }
 
+button {
+    align-self: center;
+}
+
 #guessButton, #reset {
     cursor: pointer;
 }
