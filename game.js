@@ -18,13 +18,30 @@ button.addEventListener("click", function(){
     let guess = parseInt(input.value);
     if (guess < 1 || guess > 100) {
         message.textContent = "Guess your number within the Range!";
-        console.log(message);
         return;
     };
+
     message.textContent = "";
     pastGuesses.push(guess);
     tracker.innerText = "Previous Guesses: " + pastGuesses;
-    // console.log(pastGuesses);
+    attempts--;// console.log(pastGuesses);
+
+    if (guess === answer){
+        message.textContent = "Congrats! You got it right!";
+        button.disabled = true;
+        // button.style.color
+    } else if (attempts === 0){
+        message.textContent = `Game Over. The correct answer was ${answer}.`;
+        button.disabled = true;
+    } else{
+        let hint; 
+        if (guess < answer){
+            hint = "higher";
+        } else {
+            hint = "Lower"
+        } 
+        message.textContent = `Try again! ${hint}`;
+    }
 })
-console.log("finish")
+
 
