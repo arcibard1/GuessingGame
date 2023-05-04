@@ -35,7 +35,7 @@ button.addEventListener("click", function(){
     } else if (attempts === 0){
         message.textContent = `Game Over. The correct answer was ${answer}.`;
         button.disabled = true;
-        body.style.backgroundColor = 'red';
+        body.style.backgroundColor = 'orangered';
     } else{
         let hint; 
         if (guess < answer){
